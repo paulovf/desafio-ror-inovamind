@@ -1,5 +1,5 @@
-# desafio-ror-inovamind
-Uma API responsável por efetuar uma busca de frases, no site http://quotes.toscrape.com/, a partir de uma tag informada na requisição.
+# Desafio Ruby-on-Rails InovaMind
+Uma API responsável por efetuar uma busca de frases no site http://quotes.toscrape.com/, a partir de uma tag informada em uma requisição HTTP GET.
 
 ### Tecnologias utilizadas:
 
@@ -21,16 +21,16 @@ Uma API responsável por efetuar uma busca de frases, no site http://quotes.tosc
 - mongoid
 
 ### Lógica adotada
-Esta API retorna frases pesqusiadas a partir de uma tag informada. Primeiramente é feita uma pesquisa no banco de dadados local, que se comporta como um cache de palavras. 
+Esta API retorna frases pesqusiadas a partir de uma tag informada. Primeiramente é feita uma pesquisa no banco de dados local, que se comporta como um cache de palavras. 
 
-Caso a tag não tenha sido encontrada no banco de dados, é realizada uma busca na página inicial do http://quotes.toscrape.com/. Caso tenha encontrado a tag nesta página, é feito um crawler (rastreio) da tag pesquisada em todo o conteúdo html da paǵina inicial. Ao encontrar a tag, as informações relacionadas a esta tag são lidas, e gravadas no banco de dados.
+Caso a tag não tenha sido encontrada no banco de dados, é realizada uma busca na página inicial do site http://quotes.toscrape.com/. Caso tenha encontrado a tag nesta página, é feito um crawler (rastreio) da tag pesquisada em todo o conteúdo HTML da página inicial. Ao encontrar a tag, as informações relacionadas a esta tag são lidas, e gravadas no banco de dados.
 
 As informações gravadas são:
 
 - Nome do autor;
 - Link para mais informações acerca do autor;
 - Frase ligada a este autor;
-- Grupo de tags nais quais esta frase está relacionada (pode ter uma ou mais tags).
+- Grupo de tags nas quais esta frase está relacionada (pode ter uma ou mais tags).
       
 Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ não retorne nenhuma tag, é feita uma segunda pesquisa, informando a tag na url do site, seguindo este padrão:
 ```http://quotes.toscrape.com/tag/<tag_a_ser_pesquisada>/```
@@ -42,7 +42,7 @@ Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ nã
 3. Entre na pasta ```desafio-ror-inovamind/source/desafio```;
 4. Instale as dependências com o comando ```bundle install```;
 5. Faça as migrações para o banco com o comando ```rake db:migrate```;
-6. Execute a API com o comando ```rail s``` ou ```rail s -b <ip>```;
+6. Execute a API com o comando ```rails s``` ou ```rails s -b <ip>```;
 
 
 ### Utilização da API
