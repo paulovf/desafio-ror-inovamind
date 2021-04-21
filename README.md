@@ -22,7 +22,9 @@ Uma API responsável por efetuar uma busca de frases, no site http://quotes.tosc
 
 ### Lógica adotada
 Esta API retorna frases pesqusiadas a partir de uma tag informada. Primeiramente é feita uma pesquisa no banco de dadados local, que se comporta como um cache de palavras. 
+
 Caso a tag não tenha sido encontrada no banco de dados, é realizada uma busca na página inicial do http://quotes.toscrape.com/. Caso tenha encontrado a tag nesta página, é feito um crawler (rastreio) da tag pesquisada em todo o conteúdo html da paǵina inicial. Ao encontrar a tag, as informações relacionadas a esta tag são lidas, e gravadas no banco de dados.
+
 As informações gravadas são:
 
 - Nome do autor;
@@ -47,26 +49,26 @@ Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ nã
 
 1. Criar um usuário para consumo dos dados
 ```
-    curl -H "Content-Type: application/json" -X POST -d '{"user": {"email":"example@example.com","password":"123", "password_confirmation": "123"}}' http://localhost:3000/user
+curl -H "Content-Type: application/json" -X POST -d '{"user": {"email":"example@example.com","password":"123", "password_confirmation": "123"}}' http://localhost:3000/user
 
 ```
 
 2. Fazer login na api (se o login for realizado com sucesso, a api irá lhe retornar o token de acesso)
 ```
-    curl -H "Content-Type: application/json" -X POST -d '{"email":"example@example.com","password":"123"}' http://localhost:3000/authenticate
+curl -H "Content-Type: application/json" -X POST -d '{"email":"example@example.com","password":"123"}' http://localhost:3000/authenticate
 ```
 
 3. Consultar uma tag na api
 ```
-    curl -H "Authorization: <token_acesso>" -X GET http://localhost:3000/quotes/<tag>
+curl -H "Authorization: <token_acesso>" -X GET http://localhost:3000/quotes/<tag>
 ```
 
 4. Alterar senha do usuário (é preciso estar logado. Informe o email do usuário na url, utilizando o código %2e no lugar dos pontos)
 ```
-    curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X PUT -d '{"user": {"password":"456", "password_confirmation": "456"}}' http://localhost:3000/user/example@example%2ecom
+curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X PUT -d '{"user": {"password":"456", "password_confirmation": "456"}}' http://localhost:3000/user/example@example%2ecom
 ```
 
 5. Excluir usuário (é preciso estar logado. Informe o email do usuário na url, utilizando o código %2e no lugar dos pontos)
 ```
-    curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X DELETE http://localhost:3000/user/example@example%2ecom
+curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X DELETE http://localhost:3000/user/example@example%2ecom
 ```
