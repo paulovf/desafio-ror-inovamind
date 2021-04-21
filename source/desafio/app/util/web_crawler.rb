@@ -2,14 +2,20 @@ require 'nokogiri'
 require 'open-uri'
 
 class WebCrawler
+    # Classe que contém os métods responsáveis pela busca das frase no site quotes.toscrape.com e o seu 
+    # armazenamento no banco de dados
     URL = 'http://quotes.toscrape.com'
     
+    # Método que faz a requisição HTTP para o site quotes.toscrape.com
     def self.request(tag)
         begin
+            # Requisição feita na página inicial do site quotes.toscrape.com
             request = Nokogiri::HTML(open(URL))
             resultList = createResultList(request)
             listQuotes = createListQuotes(resultList, tag)
 
+            # Caso não tenha sido encontrada a tag nformada na página inicial, é feita uma outra pesquisa
+            # no site quotes.toscrape.com, desta vez, passando a tag pesquisada como parâmetro da URL
             if listQuotes.size == 0
                 request = Nokogiri::HTML(open("#{URL}/tag/#{tag}/"))
                 resultList = createResultList(request)
@@ -22,6 +28,8 @@ class WebCrawler
         end
     end
 
+    # Método que cria uma lista contendo as informações rastreadas da página html vinda da requisição ao site
+    # quotes.toscrape.com
     def self.createResultList(request)
         return request.css(".quote").map{
             |item| [
@@ -33,6 +41,8 @@ class WebCrawler
         }
     end
 
+    # Método que cria a lista de objetos Quote de acordo com os dados vindos da lista de conteúdos rastreados do
+    # site quotes.toscrape.com
     def self.createListQuotes(resultList, tag)
         listQuotes = []
         resultList.each do |elements|
@@ -46,6 +56,7 @@ class WebCrawler
         return listQuotes
     end
 
+    # Método que faz a gravação do objeto Quote no banco de dados
     def self.save(elements)
         begin
             @quote = Quote.find_or_create_by(

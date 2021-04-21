@@ -21,11 +21,13 @@ class AuthenticateUser
         else
             user = nil
         end
-        #begin
+        # caso o usuário tente fazer login com uma conta excluída, é feito este tratamento
+        begin
             return user if user && user.authenticate(password)
-        #rescue
-
-        #end
+        rescue
+            errors.add :user_authentication, 'user not found'
+            nil
+        end
         errors.add :user_authentication, 'invalid credentials'
         nil
     end

@@ -14,6 +14,7 @@ class AuthorizeApiRequest
     attr_reader :headers
   
     def user
+        # Caso o usuário esteja utilizando o token de uma conta recém excluída, é feito este tratamento
         begin
             @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
             @user || errors.add(:token, 'Invalid token') && nil
