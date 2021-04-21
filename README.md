@@ -19,6 +19,8 @@ Uma API responsável por efetuar uma busca de frases no site http://quotes.toscr
 - jwt
 - simple_command
 - mongoid
+- rspec-rails (Grupo development)
+- mongoid-rspec (Grupo development)
 
 ### Lógica adotada
 Esta API retorna frases pesqusiadas a partir de uma tag informada. Primeiramente é feita uma pesquisa no banco de dados local, que se comporta como um cache de palavras. 
@@ -71,4 +73,11 @@ curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X P
 5. Excluir usuário (é preciso estar logado. Informe o email do usuário na url, utilizando o código %2e no lugar dos pontos)
 ```
 curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X DELETE http://localhost:3000/user/example@example%2ecom
+```
+
+### Fazendo testes na API
+
+1. Para poder fazer testes na api, utilizando o rspec, basta executar o comando abaixo dentro da pasta ```desafio-ror-inovamind/source/desafio```;
+```
+rspec
 ```
