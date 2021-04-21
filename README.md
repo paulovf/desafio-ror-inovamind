@@ -1,6 +1,5 @@
 # desafio-ror-inovamind
-
-      Uma API responsável por efetuar uma busca de frases, no site http://quotes.toscrape.com/, a partir de uma tag informada na requisição.
+Uma API responsável por efetuar uma busca de frases, no site http://quotes.toscrape.com/, a partir de uma tag informada na requisição.
 
 ### Tecnologias utilizadas:
 
@@ -22,18 +21,18 @@
 - mongoid
 
 ### Lógica adotada
-      Esta API retorna frases pesqusiadas a partir de uma tag informada. Primeiramente é feita uma pesquisa no banco de dadados local, que se comporta como um cache de palavras. 
-      Caso a tag não tenha sido encontrada no banco de dados, é realizada uma busca na página inicial do http://quotes.toscrape.com/. Caso tenha encontrado a tag nesta página, é feito um crawler (rastreio) da tag pesquisada em todo o conteúdo html da paǵina inicial. Ao encontrar a tag, as informações relacionadas a esta tag são lidas, e gravadas no banco de dados.
-      As informações gravadas são:
+Esta API retorna frases pesqusiadas a partir de uma tag informada. Primeiramente é feita uma pesquisa no banco de dadados local, que se comporta como um cache de palavras. 
+Caso a tag não tenha sido encontrada no banco de dados, é realizada uma busca na página inicial do http://quotes.toscrape.com/. Caso tenha encontrado a tag nesta página, é feito um crawler (rastreio) da tag pesquisada em todo o conteúdo html da paǵina inicial. Ao encontrar a tag, as informações relacionadas a esta tag são lidas, e gravadas no banco de dados.
+As informações gravadas são:
 
 - Nome do autor;
 - Link para mais informações acerca do autor;
 - Frase ligada a este autor;
 - Grupo de tags nais quais esta frase está relacionada (pode ter uma ou mais tags).
       
-      Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ não retorne nenhuma tag, é feita uma segunda pesquisa, informando a tag na url do site, seguindo este padrão:
-      ```http://quotes.toscrape.com/tag/<tag_a_ser_pesquisada>/```
-      
+Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ não retorne nenhuma tag, é feita uma segunda pesquisa, informando a tag na url do site, seguindo este padrão:
+```http://quotes.toscrape.com/tag/<tag_a_ser_pesquisada>/```
+
 
 ### Executando o projeto
 1. Para executar a api, faça o clone deste repositório;
