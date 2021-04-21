@@ -1,5 +1,5 @@
 class QuoteController < ApplicationController
-    before_action :set_quote, only: [:show]
+    before_action :authenticate_request, :set_quote, only: [:show]
 
     def show
         if @quotes.size == 0
