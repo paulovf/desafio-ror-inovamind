@@ -1,6 +1,11 @@
 class QuoteController < ApplicationController
     before_action :authenticate_request, :set_quote, only: [:show]
 
+    def index
+        render json: {'info': 'Desafio Ruby-on-Rails InovaMind. Desenvolvido por: Paulo Vitor Francisco - 2021'}, 
+            adapter: :json
+    end
+
     # Exibe todas as frases que contenha a tag informada, na qual esta tag esteja no array de tags
     def show
         # Se o array de quotes for maior que zero, significa que as frases foram trazidas do banco de

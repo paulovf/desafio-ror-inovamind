@@ -10,12 +10,12 @@ class WebCrawler
     def self.request(tag)
         begin
             # Requisição feita na página inicial do site quotes.toscrape.com
-            listQuotes = sendRequest(URL)
+            listQuotes = sendRequest(URL, tag)
 
             # Caso não tenha sido encontrada a tag nformada na página inicial, é feita uma outra pesquisa
             # no site quotes.toscrape.com, desta vez, passando a tag pesquisada como parâmetro da URL
             if listQuotes.size == 0
-                listQuotes = sendRequest("#{URL}/tag/#{tag}/")
+                listQuotes = sendRequest("#{URL}/tag/#{tag}/", tag)
             end
             
             return listQuotes
@@ -26,7 +26,7 @@ class WebCrawler
 
     # Método que envia a requisição de busca das frases para o site quotes.toscrape, de acordo com a
     # URL passada como parâmetro
-    def self.sendRequest(url)
+    def self.sendRequest(url, tag)
         request = Nokogiri::HTML(open(url))
         resultList = createResultList(request)
         return createListQuotes(resultList, tag)

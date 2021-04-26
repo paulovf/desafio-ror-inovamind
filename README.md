@@ -11,7 +11,7 @@ Uma API responsável por efetuar uma busca de frases no site http://quotes.toscr
 
 - Ruby 2.4.x
 - Rails 5.2.x
-- MongoDB 3.x
+- MongoDB >=3.x
 
 #### Gems extras utilizadas
 
@@ -38,7 +38,7 @@ Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ nã
 ```http://quotes.toscrape.com/tag/<tag_a_ser_pesquisada>/```
 
 
-### Executando o projeto
+### Executando o projeto (sem Docker-Compose)
 1. Para executar a api, faça o clone deste repositório;
 2. Certifique-se de que as versões do Ruby, Rails e MongoDB atendem aos requisitos citados acima;
 3. Entre na pasta ```desafio-ror-inovamind/source/desafio```;
@@ -47,13 +47,12 @@ Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ nã
 6. Execute a API com o comando ```rails s``` ou ```rails s -b <ip>```;
 
 
-### Utilizando Docker
+### Executando o projeto utilizando Docker-Compose
 
-1. Entre na pasta ```desafio-ror-inovamind/source/desafio```;
-
-2. Digite o comando ```docker-compose build```;
-
-3. Para rodar o projeto digote o comando ```docker-compose up```;
+1. Para executar a api, faça o clone deste repositório;
+2. Entre na pasta ```desafio-ror-inovamind/source/desafio```;
+3. Digite o comando ```sudo docker-compose build```;
+4. Para rodar o projeto digite o comando ```sudo docker-compose up```;
 
 
 ### Utilização da API
