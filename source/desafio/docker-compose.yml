@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:latest
+    container_name: "mongodb"
+    volumes:
+      - /var/lib/mongodb/data
+    ports:
+      - 27017:27017
+
+  website:
+    depends_on:
+      - 'db'
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/usr/src/app'
+    command: bundle exec rails s -b '0.0.0.0'
