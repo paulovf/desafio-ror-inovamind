@@ -47,6 +47,15 @@ Caso a pesquisa feita na página inicial do site http://quotes.toscrape.com/ nã
 6. Execute a API com o comando ```rails s``` ou ```rails s -b <ip>```;
 
 
+### Utilizando Docker
+
+1. Entre na pasta ```desafio-ror-inovamind/source/desafio```;
+
+2. Digite o comando ```docker-compose build```;
+
+3. Para rodar o projeto digote o comando ```docker-compose up```;
+
+
 ### Utilização da API
 
 1. Criar um usuário para consumo dos dados
