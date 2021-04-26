@@ -32,7 +32,7 @@ class WebCrawler
         return createListQuotes(resultList, tag)
     end
 
-    # Método que cria uma lista contendo as informações rastreadas da página html vinda da requisição ao site
+    # Método que cria uma lista contendo as informações rastreadas da página html vindas da requisição ao site
     # quotes.toscrape.com
     def self.createResultList(request)
         return request.css(".quote").map{

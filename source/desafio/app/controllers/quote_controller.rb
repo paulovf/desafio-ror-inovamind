@@ -6,12 +6,13 @@ class QuoteController < ApplicationController
             adapter: :json
     end
 
-    # Exibe todas as frases que contenha a tag informada, na qual esta tag esteja no array de tags
+    # Exibe todas as frases que contenham a tag informada, na qual esta tag esteja no array de tags
     def show
         # Se o array de quotes for maior que zero, significa que as frases foram trazidas do banco de
         # dados
         if @quotes.size == 0
-            # caso o array de quotes tenha tamanho zero, será feita a pesquisa das frase no site
+            # caso o array de quotes tenha tamanho zero, será feita a pesquisa das frase no 
+            # site http://quotes.toscrape.com/
             @quotes = WebCrawler.request(params[:tag].downcase)
             # Caso ocorra algum erro na pesquisa, é retornada uma lista vazia
             if @quotes == nil
