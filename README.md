@@ -83,9 +83,15 @@ curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X P
 curl -H "Authorization: <token_acesso>" -H "Content-Type: application/json" -X DELETE http://localhost:3000/user/example@example%2ecom
 ```
 
-### Fazendo testes na API
+### Fazendo testes na API (Sem Docker-Compose)
 
 1. Para poder fazer testes na api, utilizando o rspec, basta executar o comando abaixo dentro da pasta ```desafio-ror-inovamind/source/desafio```;
 ```
 rspec
+```
+
+### Fazendo testes na API utilizando Docker-Compose
+1. Para poder fazer testes na api, utilizando o rspec em conjunto com Docker-Compose, basta executar o comando abaixo dentro da pasta ```desafio-ror-inovamind/source/desafio```;
+```
+sudo docker-compose run api_quote rspec
 ```
